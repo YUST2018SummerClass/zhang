@@ -1,23 +1,17 @@
-package edu.yust.ceceom;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
+package cecom.yust.edu;
 
 public class Order {
-	private int tableNum;
-	private String orderedMenu;
-	private double price;
-	
-	
-	public int getTableNum() {
-		return tableNum;
+	int tableNumber;
+	String orderedMenu;
+	int menuPrice;
+	int orderedNumber;
+
+	public int getTableNumber() {
+		return tableNumber;
 	}
 
-	public void setTableNum(int tableNum) {
-		this.tableNum = tableNum;
-	}
-	public void getTotalPrice() {
-		
+	public void setTableNumber(int tableNumber) {
+		this.tableNumber = tableNumber;
 	}
 
 	public String getOrderedMenu() {
@@ -28,32 +22,31 @@ public class Order {
 		this.orderedMenu = orderedMenu;
 	}
 
-	public double getPrice() {
-		return price;
+	public int getMenuPrice() {
+		return menuPrice;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
+	public void setMenuPrice(int menuPrice) {
+		this.menuPrice = menuPrice;
 	}
 
-	public Order(int tableNum, String orderMenu, double price) {
-		super();
-		this.tableNum = tableNum;
-		this.orderedMenu = orderMenu;
-		this.price = price;
+	public int getOrderedNumber() {
+		return orderedNumber;
 	}
 
-
-	public static void main(String[] args) throws Exception{
-		FileReader fr= new FileReader("c:/test/order.txt");
-		BufferedReader bReader = new BufferedReader(fr);
-		String str = null;
-		while ((str=bReader.readLine())!=null) {
-			System.out.println(str.split("£¬")[1]);
-		}
-		bReader.close();
-		fr.close();
-		
+	public void setOrderedNumber(int orderedNumber) {
+		this.orderedNumber = orderedNumber;
 	}
+
+	@Override
+	public String toString() {
+		return "Order [tableNumber=" + tableNumber + ", orderedMenu=" + orderedMenu + ", menuPrice=" + menuPrice
+				+ ", orderedNumber=" + orderedNumber + ", totalPrice=" + menuPrice*orderedNumber + "]";
+	}
+
+	public void printOrder() {
+		System.out.printf("Table: %d\t Menu: %s\t Number: %d\t Price:%d\t Pay:%d\n", tableNumber, orderedMenu, orderedNumber, menuPrice,
+				menuPrice*orderedNumber);
+		} 
 
 }
